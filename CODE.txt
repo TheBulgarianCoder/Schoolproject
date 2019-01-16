@@ -1,0 +1,58 @@
+import java.util.*;
+
+public class Test {
+
+	
+	public static int arrayMax(ArrayList<Integer> arr) {
+		int maxValue=arr.get(0);
+		for(Integer i:arr) {
+			if(i>maxValue) {
+				maxValue=i;
+			}
+		}
+		return maxValue;
+	}
+	 
+	public static int arrayMin(ArrayList<Integer> arr) {
+		int minValue=arr.get(0);
+		for(Integer i:arr) {
+			if(i<minValue) {
+				minValue=i;
+			}
+		}
+		return minValue;
+	}
+	 
+	public static int arraySum(ArrayList<Integer> arr) {
+		int sum=0;
+		for(Integer i:arr) {
+			sum+=i;
+		}
+		return sum;
+	}
+	
+	public static double arrayAverage(ArrayList<Integer> arr) {
+		double average= arraySum(arr)/(double)arr.size();
+		return average;
+	}
+	
+	 public static void main(String[] args) {
+
+		Scanner input = new Scanner(System.in);
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		String[] a=input.nextLine().split(" ");
+		
+		while (input.hasNextInt()) {
+			arr.add(input.nextInt());
+		}
+		
+		
+		System.out.printf("Min= %d\n",arrayMin(arr));
+		System.out.printf("Max= %d\n",arrayMax(arr));
+		System.out.printf("Sum= %d\n",arraySum(arr));
+		System.out.printf("Average = %.1f\n",arrayAverage(arr));
+	
+		
+		input.close();
+	}
+}
