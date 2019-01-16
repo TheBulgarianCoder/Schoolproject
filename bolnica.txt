@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Test {
+
+	public static void main(String[] Args) {
+
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Enter a period: ");
+		int period = Integer.parseInt(input.nextLine());
+		int treatedPatients = 0;
+		int untreatedPatients = 0;
+		int doctorsNum = 7;
+
+		for (int day = 1; day <= period; day++) {
+			System.out.printf("Patients at day %d: ",day);
+			int currentPatients = Integer.parseInt(input.nextLine());
+
+			if ((day % 3 == 0) && (untreatedPatients > treatedPatients)) {
+				doctorsNum++;
+			}
+
+			if (currentPatients > doctorsNum) {
+				treatedPatients+=doctorsNum;
+				untreatedPatients += currentPatients - doctorsNum;
+			}else {
+				treatedPatients+=currentPatients;
+			}
+
+		}
+		System.out.printf("\nTreated patients: %d\n",treatedPatients);
+		System.out.printf("Untreated patients: %d\n",untreatedPatients);
+
+	}
+}

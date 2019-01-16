@@ -1,0 +1,57 @@
+import java.util.*;
+
+public class Test1 {
+
+	public static void main(String[] args) {
+
+		Scanner input = new Scanner(System.in);
+		byte examHour = (byte) Integer.parseInt(input.nextLine());
+		byte examMinutes = (byte) Integer.parseInt(input.nextLine());
+		byte arrivalHour = (byte) Integer.parseInt(input.nextLine());
+		byte arrivalMinutes = (byte) Integer.parseInt(input.nextLine());
+
+		int examTime = Math.abs((examHour * 60 + examMinutes));
+		int arrivalTime = Math.abs((arrivalHour * 60 + arrivalMinutes));
+		System.out.println(examTime);
+		System.out.println(arrivalTime);
+		// final int finalMins = Math.abs(arrivalTime - examTime);
+		// int finalHours=Math.abs(arrivalTime - examTime) % 60;
+
+		if (examTime-arrivalTime >= 0 || examTime - arrivalTime <= -30) {
+			System.out.println("On time");
+			// Checker(examTime, arrivalTime);
+
+		} else if (examTime - arrivalTime > 0) {
+			System.out.println("Early");
+			// Checker(examTime, arrivalTime);9
+		
+		} else{
+			System.out.println("Late");
+			// Checker(examTime, arrivalTime);
+		}
+		System.out.println(examTime-arrivalTime);
+
+		input.close();
+
+	}
+
+	public static int Checker(int examTime, int arrivalTime) {
+		if ((examTime - arrivalTime) != 0) {
+
+			if (examTime - arrivalTime < 60) {
+				System.out.printf("%d minutes before the start");
+
+			} else if (examTime - arrivalTime >= 60) {
+				System.out.printf("%d:%d hours before the start");
+
+			} else if (arrivalTime - examTime < 60) {
+				System.out.printf("%d minutes after the start");
+
+			} else if (arrivalTime - examTime >= 60) {
+				System.out.printf("hh:mm hours after the start");
+			}
+		}
+		return 0;
+	}
+}
+

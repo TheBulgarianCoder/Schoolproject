@@ -1,0 +1,70 @@
+
+import java.util.*;
+
+public class Test {
+
+	public static String repeatStr(String symbol, int number) {
+		StringBuffer buffer = new StringBuffer();
+
+		for (int i = 0; i < number; i++) {
+			buffer.append(symbol);
+		}
+		return buffer.toString();
+
+	}
+
+	public static void main(String[] Args) {
+
+		Scanner input = new Scanner(System.in);
+		// System.out.println("Enter size");
+		int n = Integer.parseInt(input.nextLine());
+
+		int width = 5 * n;
+		int leftDashes = 3 * n;
+		int middleDashes = 0;
+		int rightDashes = width - leftDashes - middleDashes - 2;
+
+		// Top part
+		for (int i = 0; i < n; i++) {
+			System.out.printf("%s*%s*%s",
+					repeatStr("-", leftDashes),
+					repeatStr("-", middleDashes),
+					repeatStr("-", rightDashes));
+			System.out.println();
+
+			middleDashes++;
+			rightDashes--;
+		}
+		middleDashes--;
+		rightDashes++;
+
+		// Handle part
+		for (int i = 0; i < n / 2; i++) {
+			System.out.printf("%s*%s*%s", 
+					repeatStr("*", leftDashes), 
+					repeatStr("-", middleDashes),
+					repeatStr("-", rightDashes));
+			System.out.println();
+		}
+		// Bottom part
+		for (int i = 0; i < n / 2 - 1; i++) {
+			System.out.printf("%s*%s*%s", 
+					repeatStr("-", leftDashes), 
+					repeatStr("-", middleDashes),
+					repeatStr("-", rightDashes));
+			System.out.println();
+
+			leftDashes--;
+			rightDashes--;
+			middleDashes += 2;
+		}
+
+		System.out.printf("%s*%s*%s", 
+				repeatStr("-", leftDashes), 
+				repeatStr("*", middleDashes),
+				repeatStr("-", rightDashes));
+		System.out.println();
+
+		input.close();
+	}
+}

@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int num = Integer.parseInt(sc.nextLine());
+        int firstDigit = num / 100;
+        int secondDigit = num / 10 % 10;
+        int thirdDigit = num % 10;
+
+        int n = firstDigit + secondDigit;
+        int m = firstDigit + thirdDigit;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (num % 5 == 0) {
+                    num -= firstDigit;
+                } else if (num % 3 == 0) {
+                    num -= secondDigit;
+                } else {
+                    num += thirdDigit;
+                }
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+        
+    }
+}
+    
